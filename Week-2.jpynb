@@ -1,0 +1,494 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Yd9Kw7stj4Ip",
+        "outputId": "68e5b353-a131-43cc-ec24-9ab4d7284744"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter a number: 54\n",
+            "You entered: 54\n"
+          ]
+        }
+      ],
+      "source": [
+        "try:\n",
+        "    x = int(input(\"Enter a number: \"))\n",
+        "    print(\"You entered:\", x)\n",
+        "except ValueError:\n",
+        "    print(\"That was not a valid number!\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "try:\n",
+        "    num = int(input(\"Enter a number to divide 100: \"))\n",
+        "    result = 100 / num\n",
+        "except ZeroDivisionError:\n",
+        "    print(\"Cannot divide by zero!\")\n",
+        "except ValueError:\n",
+        "    print(\"Invalid input! Not a number.\")\n",
+        "else:\n",
+        "    print(\"Result is:\", result)\n",
+        "finally:\n",
+        "    print(\"Execution complete. This block always runs.\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "PUHlgsiukTj2",
+        "outputId": "fb80a3b4-9718-4a2a-c343-a0d79241f68f"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter a number to divide 100: 5\n",
+            "Result is: 20.0\n",
+            "Execution complete. This block always runs.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "try:\n",
+        "    a = int(\"ten\")  # Causes ValueError\n",
+        "    b = 10 / 0      # Causes ZeroDivisionError\n",
+        "except (ValueError, ZeroDivisionError) as e:\n",
+        "    print(\"An error occurred:\", e)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "dEHKCHgkkfXi",
+        "outputId": "650225a2-1995-470c-a38a-9cebdedb6831"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "An error occurred: invalid literal for int() with base 10: 'ten'\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def check_age(age):\n",
+        "    if age < 0:\n",
+        "        raise ValueError(\"Age cannot be negative!\")\n",
+        "    else:\n",
+        "        print(\"Age is valid.\")\n",
+        "\n",
+        "try:\n",
+        "    check_age(-5)\n",
+        "except ValueError as e:\n",
+        "    print(\"Caught an exception:\", e)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "_jYzSHgDkjgI",
+        "outputId": "6c6dcbc7-02ee-4f6a-9022-ffaa5dfc25a1"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Caught an exception: Age cannot be negative!\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def divide(a, b):\n",
+        "    print(f\"Dividing {a} by {b}\")  # Debug info\n",
+        "    return a / b\n",
+        "\n",
+        "print(divide(10, 2))  # Correct\n",
+        "# print(divide(10, 0))  # Uncomment to see the crash"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "B44y_fF3k4z6",
+        "outputId": "95ed2659-817a-48ec-c0cb-cd7b2e1536ef"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Dividing 10 by 2\n",
+            "5.0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def calculate_total(price, quantity):\n",
+        "    # pdb.set_trace()  # Start interactive debugger here\n",
+        "    return price * quantity\n",
+        "\n",
+        "print(calculate_total(50, 2))"
+      ],
+      "metadata": {
+        "id": "Y2ArVLJ7lkYb",
+        "outputId": "070862ad-f854-4321-cd62-2752263d1f71",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "100\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "#Working with Core Python Libraries\n"
+      ],
+      "metadata": {
+        "id": "9BnMDs3oBpvt"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        " 1. os – Operating System Interface"
+      ],
+      "metadata": {
+        "id": "DzLANgR1BxhQ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "kLeV0qKYBLZn",
+        "outputId": "af6d84dd-4142-42a3-965a-ea74bff1e8c9"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Current Directory: /content\n",
+            "Files and Folders: ['.config', 'sample_data']\n"
+          ]
+        }
+      ],
+      "source": [
+        "import os\n",
+        "\n",
+        "# Get current working directory\n",
+        "print(\"Current Directory:\", os.getcwd())\n",
+        "\n",
+        "# List files and directories in current directory\n",
+        "print(\"Files and Folders:\", os.listdir())\n",
+        "\n",
+        "# Create a new folder\n",
+        "os.mkdir(\"demo_folder\")  # Creates folder named 'demo_folder'\n",
+        "\n",
+        "# Rename a folder\n",
+        "os.rename(\"demo_folder\", \"renamed_folder\")\n",
+        "\n",
+        "# Remove a folder (make sure it's empty)\n",
+        "os.rmdir(\"renamed_folder\")\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "2. datetime – Date and Time Handling"
+      ],
+      "metadata": {
+        "id": "wLJiK5pAB1dX"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from datetime import datetime, date, timedelta\n",
+        "\n",
+        "# Current date and time\n",
+        "now = datetime.now()\n",
+        "print(\"Now:\", now)\n",
+        "\n",
+        "# Only today's date\n",
+        "today = date.today()\n",
+        "print(\"Today's Date:\", today)\n",
+        "\n",
+        "# Create a specific date\n",
+        "dob = date(2000, 1, 1)\n",
+        "print(\"DOB:\", dob)\n",
+        "\n",
+        "# Date arithmetic\n",
+        "yesterday = today - timedelta(days=1)\n",
+        "tomorrow = today + timedelta(days=1)\n",
+        "\n",
+        "print(\"Yesterday:\", yesterday)\n",
+        "print(\"Tomorrow:\", tomorrow)\n",
+        "\n",
+        "# Format date to string\n",
+        "formatted = now.strftime(\"%d-%m-%Y %H:%M:%S\")\n",
+        "print(\"Formatted DateTime:\", formatted)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "DOZtLARCBzkZ",
+        "outputId": "14d9aee5-0ffb-463b-e4ed-434c2f228c80"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Now: 2026-08-24 10:33:37.785432\n",
+            "Today's Date: 2026-08-24\n",
+            "DOB: 2000-01-01\n",
+            "Yesterday: 2026-08-23\n",
+            "Tomorrow: 2026-08-25\n",
+            "Formatted DateTime: 24-08-2026 10:33:37\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        " 3. random – Random Numbers & Choices"
+      ],
+      "metadata": {
+        "id": "aPqJPmc2B7Ka"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import random\n",
+        "\n",
+        "# Generate random integer between 1 and 100\n",
+        "print(\"Random Int:\", random.randint(1, 100))\n",
+        "\n",
+        "# Generate random float between 0 and 1\n",
+        "print(\"Random Float:\", random.random())\n",
+        "\n",
+        "# Choose a random item from a list\n",
+        "colors = ['red', 'green', 'blue']\n",
+        "print(\"Random Color:\", random.choice(colors))\n",
+        "\n",
+        "# Shuffle a list\n",
+        "random.shuffle(colors)\n",
+        "print(\"Shuffled List:\", colors)\n",
+        "\n",
+        "# Generate a random sample of multiple items\n",
+        "print(\"Sample:\", random.sample(range(1, 50), 5))\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "sSlWVqjOB3uu",
+        "outputId": "026e1656-3c38-41b3-d3bb-4fc153e9b988"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Random Int: 9\n",
+            "Random Float: 0.6855310454796075\n",
+            "Random Color: red\n",
+            "Shuffled List: ['blue', 'green', 'red']\n",
+            "Sample: [6, 17, 28, 29, 40]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "4. collections – Specialized Containers\n",
+        "🔹 A. Counter"
+      ],
+      "metadata": {
+        "id": "d-AX3-OOB_S9"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from collections import Counter\n",
+        "\n",
+        "# Count occurrences of elements in a list\n",
+        "fruits = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple']\n",
+        "count = Counter(fruits)\n",
+        "print(\"Fruit Count:\", count)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Uj2qzaw4B9Sm",
+        "outputId": "59205da1-ada8-4235-dec9-5f6078ea382b"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Fruit Count: Counter({'apple': 3, 'banana': 2, 'orange': 1})\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from collections import defaultdict\n",
+        "\n",
+        "# Returns a default value for missing keys\n",
+        "marks = defaultdict(lambda: 0)\n",
+        "marks['Math'] = 90\n",
+        "marks['Science'] = 80\n",
+        "print(\"English Marks (not set):\", marks['English'])  # Returns 0\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "7Xp4gyZFCBpG",
+        "outputId": "56385f0e-64d9-4d17-fc02-15cc2f49a0ee"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "English Marks (not set): 0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from collections import namedtuple\n",
+        "\n",
+        "# Create a Point object with x and y\n",
+        "Point = namedtuple('Point', 'x y')\n",
+        "p1 = Point(10, 20)\n",
+        "print(\"Point:\", p1)\n",
+        "print(\"x:\", p1.x, \"y:\", p1.y)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "TdYGxZDyCFjW",
+        "outputId": "cff0c2a1-f7f4-4d0e-a640-38970cb5dd1b"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Point: Point(x=10, y=20)\n",
+            "x: 10 y: 20\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from collections import deque\n",
+        "\n",
+        "# Double-ended queue\n",
+        "dq = deque([1, 2, 3])\n",
+        "dq.append(4)        # Add to right\n",
+        "dq.appendleft(0)    # Add to left\n",
+        "dq.pop()            # Remove from right\n",
+        "dq.popleft()        # Remove from left\n",
+        "print(\"Deque after operations:\", dq)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "G4SYigttCJ92",
+        "outputId": "5951a454-c1fb-4cc3-d1e9-526529768b0b"
+      },
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Deque after operations: deque([1, 2, 3])\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
